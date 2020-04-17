@@ -11,6 +11,7 @@ class LoginController < ApplicationController
   def create
     username = request.env["omniauth.auth"][:uid]
     email = request.env["omniauth.auth"][configatron.cas.attributes_hash][configatron.cas.email_attribute]
+    email << "@tamu.edu"
     
     if request.env["omniauth.auth"][configatron.cas.attributes_hash][configatron.cas.name_attribute]
       name = request.env["omniauth.auth"][configatron.cas.attributes_hash][configatron.cas.name_attribute].split(',').reverse.each { |x| x.strip }.join(' ')
